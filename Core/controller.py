@@ -16,7 +16,6 @@ class StateMachine:
             self.executeState(actualState)
 
             nextState = self.checkConditions(actualState.conditions) 
-            print(nextState)
             self.changeState(nextState)
             sleep(2)
 
