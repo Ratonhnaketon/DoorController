@@ -11,14 +11,12 @@ class StateMachine:
         while True:
             if self.stateIndex == 0:
                 self.variables == self.initVariables
-                
+
             actualState = self.getActualState()
             self.executeState(actualState)
-
             nextState = self.checkConditions(actualState.conditions) 
             self.changeState(nextState)
             sleep(1)
-
 
     def getActualState(self):
         actualState = self.states[self.stateIndex]
@@ -27,9 +25,7 @@ class StateMachine:
 
     def executeState(self, actualState):
         print("Running state...")
-        changedVariables = actualState.func()
-        for key, value in changedVariables.iteritems():
-            self.variables[key] = value
+        self.variables = actualState.func(self.variables)
 
     def checkConditions(self, actualStateConditions):
         for condition in actualStateConditions:
@@ -37,7 +33,8 @@ class StateMachine:
                 if not self.variables[key] == value:
                     break
             else:
-                return condition['nextState']
+                return condition.nextState
+            
         return self.stateIndex
 
     def changeState(self, nextState):

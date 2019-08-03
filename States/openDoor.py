@@ -4,7 +4,7 @@ _openDoorConditions = [
     { 'nextState': 'unlocked', 'conditions': { 'door': False } }
 ]
 
-def _openDoorFunc():
-    return {} 
+def _openDoorFunc(variables):
+    return variables
 
 openDoor = State('Porta aberta', _openDoorFunc, _openDoorConditions)

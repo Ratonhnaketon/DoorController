@@ -5,7 +5,7 @@ _unlockingConditions = [
     { 'nextState': 'init', 'conditions': { 'engine': 0, 'tries': 3 } } 
 ]
 
-def _unlockingFunc():
-    return {} 
+def _unlockingFunc(variables):
+    return variables
 
 unlocking = State('Destrancando', _unlockingFunc, _unlockingConditions)

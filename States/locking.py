@@ -4,7 +4,7 @@ _lockingConditions = [
     { 'nextState': 'init', 'conditions': { 'engine': 0 } }
 ]
 
-def _lockingFunc():
-    return {}
+def _lockingFunc(variables):
+    return variables
 
 locking = State('Trancando', _lockingFunc, _lockingConditions)

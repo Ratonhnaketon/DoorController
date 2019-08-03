@@ -6,7 +6,7 @@ _unlockedConditions = [
     { 'nextState': 'locking', 'conditions': { 'door': False } } 
 ]
 
-def _unlockedFunc():
-    return {} 
+def _unlockedFunc(variables):
+    return variables
 
 unlocked = State('Destrancado', _unlockedFunc, _unlockedConditions)
