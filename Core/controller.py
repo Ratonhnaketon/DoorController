@@ -17,7 +17,7 @@ class StateMachine:
 
             nextState = self.checkConditions(actualState.conditions) 
             self.changeState(nextState)
-            sleep(2)
+            sleep(1)
 
 
     def getActualState(self):
