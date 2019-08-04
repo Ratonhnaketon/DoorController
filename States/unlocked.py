@@ -9,4 +9,4 @@ _unlockedConditions = [
 def _unlockedFunc(variables):
     return variables
 
-unlocked = State('Destrancado', _unlockedFunc, _unlockedConditions)
+unlocked = State('unlocking', _unlockedFunc, _unlockedConditions)

@@ -7,4 +7,4 @@ _lockingConditions = [
 def _lockingFunc(variables):
     return variables
 
-locking = State('Trancando', _lockingFunc, _lockingConditions)
+locking = State('locking', _lockingFunc, _lockingConditions)

@@ -7,4 +7,4 @@ _openDoorConditions = [
 def _openDoorFunc(variables):
     return variables
 
-openDoor = State('Porta aberta', _openDoorFunc, _openDoorConditions)
+openDoor = State('openDoor', _openDoorFunc, _openDoorConditions)

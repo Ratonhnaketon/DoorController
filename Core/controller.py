@@ -5,41 +5,44 @@ class StateMachine:
         self.stateIndex = initState # string
         self.states = states        # dict
         self.variables = variables  # dict
+        self.actualState = initState 
         self.initVariables = variables.copy()
+        self.initState = initState
+        self.nextState = initState
 
     def start(self):
         while True:
-            if self.stateIndex == 0:
-                self.variables == self.initVariables
-
-            actualState = self.getActualState()
-            self.executeState(actualState)
-            nextState = self.checkConditions(actualState.conditions) 
-            self.changeState(nextState)
+            self.resetVariablesIfInitState()
+            self.getActualState()
+            self.executeState()
+            self.checkConditions() 
+            self.changeState()
             sleep(1)
 
+    def resetVariablesIfInitState(self):
+        if self.stateIndex == self.initState:
+            self.variables = self.initVariables 
+
     def getActualState(self):
-        actualState = self.states[self.stateIndex]
-        print("Actual state: {0}".format(actualState.name))
-        return actualState
+        self.actualState = self.states[self.stateIndex]
+        print('Actual state: {0}'.format(self.actualState.name))
 
-    def executeState(self, actualState):
-        print("Running state...")
-        self.variables = actualState.func(self.variables)
+    def executeState(self):
+        print('Running state...')
+        self.variables = self.actualState.func(self.variables)        
 
-    def checkConditions(self, actualStateConditions):
-        for condition in actualStateConditions:
+    def checkConditions(self):
+        self.nextState = self.actualState.name
+        for condition in self.actualState.conditions:
             for key, value in condition['conditions'].iteritems():
                 if not self.variables[key] == value:
                     break
             else:
-                return condition.nextState
+                self.nextState = condition.nextState
             
-        return self.stateIndex
-
-    def changeState(self, nextState):
-        print("Changing state...")
-        self.stateIndex = nextState
+    def changeState(self):
+        print('Changing state...')
+        self.stateIndex = self.nextState
 
 class State:
     def __init__(self, name, func, conditions):

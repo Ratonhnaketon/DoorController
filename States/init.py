@@ -7,4 +7,4 @@ _initConditions = [
 def _initFunc(variables):
     return variables
 
-init = State('Inicial', _initFunc, _initConditions)
+init = State('init', _initFunc, _initConditions)
