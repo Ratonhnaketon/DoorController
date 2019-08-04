@@ -1,14 +1,16 @@
 from threading import Thread
+import sys, tty, termios
 
 class KeyboardController(Thread):
-    def __init__(self):
+    def __init__(self, daemon):
         Thread.__init__(self)
         self.__buffer = ''
+        self.daemon = daemon
 
     def run(self):
         global buffer
         while True:
-            buffer = str(raw_input())
+            buffer = getChar(4)
             self.__buffer = buffer
 
     def getBuffer(self):
@@ -16,4 +18,16 @@ class KeyboardController(Thread):
         self.__buffer = ''
         return buffer
 
-kbController = KeyboardController()
+def getChar(quantity):
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(quantity)
+        print(ch)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+
+
+

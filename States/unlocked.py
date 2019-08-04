@@ -1,7 +1,7 @@
 from Core.controller import State
 
 _unlockedConditions = [
-    { 'nextState': 'openDoor', 'conditions': { 'door': True } }, 
+    { 'nextState': 'openDoor', 'conditions': { 'isDoorOpen': True } }, 
     { 'nextState': 'locking', 'conditions': { 'timeout': 0 } }, 
 ]
 

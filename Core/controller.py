@@ -1,9 +1,11 @@
 from time import sleep
 from threading import Thread
 
+
 class StateMachine(Thread):
     def __init__(self, states, variables, initState):
         Thread.__init__(self)
+        self.daemon = True
         self.stateIndex = initState # string
         self.states = states        # dict
         self.variables = variables  # dict
@@ -13,15 +15,16 @@ class StateMachine(Thread):
         self.nextState = initState
 
     def run(self):
-        print('Starting state machine...')
+        print('Starting state machine...\r')
+        
         while True:
             self.resetVariablesIfInitState()
             self.getActualState()
-            print('Actual state: {0}'.format(self.actualState.name))
-            print('Running state...')
+            print('Actual state: {0}\r'.format(self.actualState.name))
+            print('Running state...\r')
             self.executeState()
             self.checkConditions()
-            print('Changing state...')
+            print('Changing state...\r')
             self.changeState()
             sleep(1)
 
@@ -43,6 +46,7 @@ class StateMachine(Thread):
                     break
             else:
                 self.nextState = condition['nextState']
+                return
             
     def changeState(self):
         self.stateIndex = self.nextState
