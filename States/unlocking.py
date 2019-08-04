@@ -1,10 +1,15 @@
 from Core.controller import State
+from main import engine
+from time import sleep
 
 _unlockingConditions = [
-    { 'nextState': 'unlocked', 'conditions': { 'engine': 0 } }, 
+    { 'nextState': 'unlocked', 'conditions': { } }, 
 ]
 
 def _unlockingFunc(variables):
+    engine.rotateCounterClockWise()
+    sleep(2)
+    engine.stop()
     variables['requesting'] = False
     return variables
 
