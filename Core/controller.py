@@ -1,7 +1,9 @@
 from time import sleep
+from threading import Thread
 
-class StateMachine:
+class StateMachine(Thread):
     def __init__(self, states, variables, initState):
+        Thread.__init__(self)
         self.stateIndex = initState # string
         self.states = states        # dict
         self.variables = variables  # dict
@@ -10,25 +12,27 @@ class StateMachine:
         self.initState = initState
         self.nextState = initState
 
-    def start(self):
+    def run(self):
+        print('Starting state machine...')
         while True:
             self.resetVariablesIfInitState()
             self.getActualState()
+            print('Actual state: {0}'.format(self.actualState.name))
+            print('Running state...')
             self.executeState()
-            self.checkConditions() 
+            self.checkConditions()
+            print('Changing state...')
             self.changeState()
             sleep(1)
 
     def resetVariablesIfInitState(self):
         if self.stateIndex == self.initState:
-            self.variables = self.initVariables 
+            self.variables = self.initVariables.copy() 
 
     def getActualState(self):
         self.actualState = self.states[self.stateIndex]
-        print('Actual state: {0}'.format(self.actualState.name))
 
     def executeState(self):
-        print('Running state...')
         self.variables = self.actualState.func(self.variables)        
 
     def checkConditions(self):
@@ -38,10 +42,9 @@ class StateMachine:
                 if not self.variables[key] == value:
                     break
             else:
-                self.nextState = condition.nextState
+                self.nextState = condition['nextState']
             
     def changeState(self):
-        print('Changing state...')
         self.stateIndex = self.nextState
 
 class State:

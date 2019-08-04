@@ -6,6 +6,8 @@ from States.openDoor import openDoor
 from States.unlocked import unlocked
 from States.unlocking import unlocking
 
+from KeyboardController.controller import kbController
+
 controller = StateMachine(
     { 
         'init': init, 
@@ -24,4 +26,8 @@ controller = StateMachine(
     'init'
 )
 
+kbController.start()
 controller.start()
+
+kbController.join()
+controller.join()

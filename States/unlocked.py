@@ -3,10 +3,10 @@ from Core.controller import State
 _unlockedConditions = [
     { 'nextState': 'openDoor', 'conditions': { 'door': True } }, 
     { 'nextState': 'locking', 'conditions': { 'timeout': 0 } }, 
-    { 'nextState': 'locking', 'conditions': { 'door': False } } 
 ]
 
 def _unlockedFunc(variables):
+    variables['timeout'] -= 1 
     return variables
 
-unlocked = State('unlocking', _unlockedFunc, _unlockedConditions)
+unlocked = State('unlocked', _unlockedFunc, _unlockedConditions)

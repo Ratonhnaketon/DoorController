@@ -5,6 +5,7 @@ _openDoorConditions = [
 ]
 
 def _openDoorFunc(variables):
+    variables['timeout'] = 10
     return variables
 
 openDoor = State('openDoor', _openDoorFunc, _openDoorConditions)
