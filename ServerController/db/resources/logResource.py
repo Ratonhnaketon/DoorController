@@ -20,7 +20,6 @@ class LogResource(Resource):
 		json = ''
 		try:
 			log = LogModel.findByPersonName(item)
-			print(log)
 			if log:
 				schema = LogSchema(exclude=['lists'])
 				json = schema.dump(log).data

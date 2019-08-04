@@ -2,6 +2,7 @@ import signal
 import sys
 
 import RPi.GPIO as GPIO
+
 from ServerController.controller import svrController
 
 from Core.controller import StateMachine 

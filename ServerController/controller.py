@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
 from db.resources.logResource import LogsResource, LogResource
+from db.resources.loginResource import LoginResource
 from threading import Thread
 
 app = Flask(__name__)
@@ -31,6 +32,7 @@ class ServerController(Thread):
         self.use_reloader = True
         self.api.add_resource(LogsResource, '/logs')
         self.api.add_resource(LogResource, '/log', '/log/<int:item>')
+        self.api.add_resource(LoginResource, '/login', '/login/<int:item>')
 
     def config(self, port, debug, use_reloader):
         self.port = port
@@ -40,6 +42,6 @@ class ServerController(Thread):
     def run(self):
         from ServerController.dao import db
         db.init_app(app)
-        app.run(port=self.port, debug=self.debug, use_reloader=self.use_reloader)
+        app.run(host='0.0.0.0', port=self.port, debug=self.debug, use_reloader=self.use_reloader)
 
 svrController = ServerController()        
