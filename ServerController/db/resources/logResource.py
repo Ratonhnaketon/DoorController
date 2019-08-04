@@ -1,8 +1,8 @@
 from flask_restful import Resource, reqparse, abort
 from flask import request
 from datetime import datetime
-from db.models.logModel import LogModel
-from db.schemas.logSchema import LogSchema
+from ServerController.db.models.logModel import LogModel
+from ServerController.db.schemas.logSchema import LogSchema
 
 class LogResource(Resource):
 	parser = reqparse.RequestParser()    
@@ -36,7 +36,7 @@ class LogResource(Resource):
 		try:
 			data = LogResource.parser.parse_args()
 			if not data:
-				return {'message': 'Requisição sem JSON'}, 400
+				return {'message': 'Request without JSON'}, 400
 
 			log = LogModel(**data)
 			log.add()
