@@ -1,4 +1,6 @@
 from Core.controller import StateMachine 
+from KeyboardController.controller import kbController
+from ServerController.controller import svrController
 
 from States.init import init
 from States.locking import locking
@@ -6,7 +8,6 @@ from States.openDoor import openDoor
 from States.unlocked import unlocked
 from States.unlocking import unlocking
 
-from KeyboardController.controller import kbController
 
 controller = StateMachine(
     { 
@@ -26,8 +27,9 @@ controller = StateMachine(
     'init'
 )
 
-kbController.start()
-controller.start()
 
-kbController.join()
-controller.join()
+# kbController.start()
+# controller.start()
+svrController.start()
+# kbController.join()
+# controller.join()
