@@ -2,10 +2,10 @@ from threading import Thread
 import sys, tty, termios
 
 class KeyboardController(Thread):
-    def __init__(self, daemon):
+    def __init__(self):
         Thread.__init__(self)
         self.__buffer = ''
-        self.daemon = daemon
+        self.daemon = True
 
     def run(self):
         global buffer
@@ -28,6 +28,7 @@ def getChar(quantity):
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
-kbController = KeyboardController(True)
+
+kbController = KeyboardController()
 
 

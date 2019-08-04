@@ -15,15 +15,13 @@ from States.unlocking import unlocking
 from ServerController.controller import svrController
 from KeyboardController.controller import kbController
 # from EngineController.controller import engine
-# from DoorSensorController.controller import doorSensor
+from DoorSensorController.controller import doorSensor
 
 # GPIO.setmode(GPIO.BOARD)
 
 # engine.assignPins(37, 38)
 # doorSensor.assignPin(3)
 
-kbController.start()
-# doorSensor.start()
 
 controller = StateMachine(
     { 
@@ -45,5 +43,5 @@ controller = StateMachine(
 
 
 controller.start()
-svrController.config(5000, False, False)
-svrController.start()
+# svrController.config(5000, False, False)
+# svrController.start()
