@@ -1,9 +1,11 @@
 import RPi.GPIO as GPIO
 
 class EngineController:
-    def __init__(self, pin_in1, pin_in2):
+    def __init__(self):
         self.rotation = 0
         self.working = 0
+
+    def assignPins(self, pin_in1, pin_in2):
         self.pin_in1 = pin_in1
         self.pin_in2 = pin_in2
         GPIO.setup(pin_in1, GPIO.OUT)
@@ -22,3 +24,4 @@ class EngineController:
         GPIO.output(self.pin_in1, GPIO.LOW)
         GPIO.output(self.pin_in2, GPIO.HIGH)
 
+engine = EngineController()

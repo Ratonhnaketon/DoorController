@@ -1,6 +1,6 @@
 from threading import currentThread
 from Core.controller import State
-from main import kbController
+from KeyboardController.controller import kbController
 
 _lockedConditions = [
     { 'nextState': 'unlocking', 'conditions': { 'requesting': True } }

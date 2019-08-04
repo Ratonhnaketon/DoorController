@@ -1,5 +1,5 @@
 from Core.controller import State
-from main import engine
+from EngineController.controller import engine
 from time import sleep
 
 _unlockingConditions = [

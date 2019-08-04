@@ -13,14 +13,14 @@ from States.openDoor import openDoor
 from States.unlocked import unlocked
 from States.unlocking import unlocking
 
-from KeyboardController.controller import KeyboardController
-from EngineController.controller import EngineController
-from DoorSensorController.controller import DoorSensorController
+from KeyboardController.controller import kbController
+from EngineController.controller import engine
+from DoorSensorController.controller import doorSensor
+
 GPIO.setmode(GPIO.BOARD)
 
-kbController = KeyboardController(True)
-engine = EngineController(37, 38)
-doorSensor = DoorSensorController(3)
+engine.assignPins(37, 38)
+doorSensor.assignPin(3)
 
 kbController.start()
 doorSensor.start()
