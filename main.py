@@ -2,6 +2,7 @@ import signal
 import sys
 
 import RPi.GPIO as GPIO
+from ServerController.controller import svrController
 
 from Core.controller import StateMachine 
 from States.init import init
@@ -35,17 +36,16 @@ controller = StateMachine(
     },
     { 
         'requesting': False, 
-        'isDoorOpen': doorSensor.openDoor, 
+        'isDoorOpen': doorSensor.doorOpen, 
         'timeout': 10,
         'tries': 0
     },
     'init'
 )
 
-print('teste')
 
-
-
+# kbController.start()
 controller.start()
-
-signal.pause()
+#svrController.start()
+# kbController.join()
+# controller.join()
