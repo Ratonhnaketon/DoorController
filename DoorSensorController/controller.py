@@ -3,6 +3,7 @@ from threading import Thread
 
 class DoorSensorController(Thread):
     def __init__(self):
+        Thread.__init__(self)
         self.doorIsOpen = False
         self.daemon = True
 
