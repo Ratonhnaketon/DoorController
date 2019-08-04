@@ -41,6 +41,9 @@ class StateMachine(Thread):
     def checkConditions(self):
         self.nextState = self.actualState.name
         for condition in self.actualState.conditions:
+            if condition['conditions'] == {}:
+                self.nextState = condition['nextState']
+                return
             for key, value in condition['conditions'].iteritems():
                 if not self.variables[key] == value:
                     break
