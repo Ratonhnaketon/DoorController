@@ -1,7 +1,6 @@
 from marshmallow_sqlalchemy import ModelSchema
 from marshmallow import fields
-
-from db.models.logModel import LogModel
+from ServerController.db.models.logModel import LogModel
 
 class LogSchema(ModelSchema):
     class Meta:

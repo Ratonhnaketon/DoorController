@@ -46,6 +46,6 @@ controller = StateMachine(
 
 # kbController.start()
 controller.start()
-#svrController.start()
+svrController.config(5000, False, False)
+svrController.start()
 # kbController.join()
-# controller.join()

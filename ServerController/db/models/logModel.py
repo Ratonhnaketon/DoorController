@@ -1,5 +1,4 @@
-    
-from dao import db,Base
+from ServerController.dao import db, Base
 from datetime import datetime
 
 class LogModel(Base):
