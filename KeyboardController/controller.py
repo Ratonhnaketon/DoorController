@@ -28,6 +28,6 @@ def getChar(quantity):
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
-
+kbController = KeyboardController(True)
 
 
