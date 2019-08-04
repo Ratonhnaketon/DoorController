@@ -36,7 +36,7 @@ controller = StateMachine(
     },
     { 
         'requesting': False, 
-        'isDoorOpen': doorSensor.doorOpen, 
+        'isDoorOpen': doorSensor.doorIsOpen, 
         'timeout': 10,
         'tries': 0
     },
