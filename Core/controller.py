@@ -5,7 +5,6 @@ from threading import Thread
 class StateMachine(Thread):
     def __init__(self, states, variables, initState):
         Thread.__init__(self)
-        self.daemon = True
         self.stateIndex = initState # string
         self.states = states        # dict
         self.variables = variables  # dict

@@ -1,7 +1,7 @@
 from Core.controller import State
 
 _initConditions = [
-    { 'nextState': 'locked', 'conditions': { } }
+    { 'nextState': 'locked', 'conditions': { 'isDoorOpen': False } }
 ]
 
 def _initFunc(variables):
