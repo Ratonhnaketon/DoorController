@@ -1,9 +1,8 @@
 import signal
 import sys
 
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 
-from ServerController.controller import svrController
 
 from Core.controller import StateMachine 
 from States.init import init
@@ -13,18 +12,15 @@ from States.openDoor import openDoor
 from States.unlocked import unlocked
 from States.unlocking import unlocking
 
+# from ServerController.controller import svrController
 from KeyboardController.controller import kbController
-from EngineController.controller import engine
+# from EngineController.controller import engine
 from DoorSensorController.controller import doorSensor
 
-GPIO.setmode(GPIO.BOARD)
+# GPIO.setmode(GPIO.BOARD)
 
-engine.assignPins(37, 38)
-doorSensor.assignPin(3)
-
-kbController.start()
-doorSensor.start()
-
+# engine.assignPins(37, 38)
+# doorSensor.assignPin(3)
 
 controller = StateMachine(
     { 
@@ -37,7 +33,7 @@ controller = StateMachine(
     },
     { 
         'requesting': False, 
-        'isDoorOpen': doorSensor.doorIsOpen, 
+        'doorSensor': doorSensor.doorIsOpen, 
         'timeout': 10,
         'tries': 0
     },
@@ -45,8 +41,6 @@ controller = StateMachine(
 )
 
 
-# kbController.start()
 controller.start()
-svrController.config(5000, False, False)
-svrController.start()
-# kbController.join()
+# svrController.config(5000, False, False)
+# svrController.start()
