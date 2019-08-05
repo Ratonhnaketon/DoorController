@@ -12,7 +12,7 @@ from States.openDoor import openDoor
 from States.unlocked import unlocked
 from States.unlocking import unlocking
 
-from ServerController.controller import svrController
+# from ServerController.controller import svrController
 from KeyboardController.controller import kbController
 # from EngineController.controller import engine
 from DoorSensorController.controller import doorSensor
@@ -34,7 +34,7 @@ controller = StateMachine(
     },
     { 
         'requesting': False, 
-        'isDoorOpen': doorSensor.doorIsOpen, 
+        'doorSensor': doorSensor.doorIsOpen, 
         'timeout': 10,
         'tries': 0
     },
