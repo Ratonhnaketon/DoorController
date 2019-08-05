@@ -21,6 +21,9 @@ GPIO.setmode(GPIO.BOARD)
 engine.assignPins(37, 38)
 doorSensor.assignPin(7)
 
+doorSensor.start()
+kbController.start()
+
 controller = StateMachine(
     { 
         'init': init, 
