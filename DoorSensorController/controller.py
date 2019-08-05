@@ -14,6 +14,7 @@ class DoorSensorController(Thread):
 
     def run(self):
         while (1):
-            self.doorIsOpen = GPIO.input(self.pin) == GPIO.LOW
+            self.doorIsOpen = False
+            # GPIO.input(self.pin) == GPIO.LOW
 
 doorSensor = DoorSensorController()

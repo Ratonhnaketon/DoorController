@@ -22,7 +22,6 @@ from DoorSensorController.controller import doorSensor
 # engine.assignPins(37, 38)
 # doorSensor.assignPin(3)
 
-
 controller = StateMachine(
     { 
         'init': init, 

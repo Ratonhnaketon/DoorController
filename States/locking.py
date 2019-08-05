@@ -3,7 +3,7 @@ from Core.controller import State
 from time import sleep
 
 _lockingConditions = [
-    { 'nextState': 'init', 'conditions': { } }
+    { 'nextState': 'init', 'conditions': { 'engine': False } }
 ]
 
 def _lockingFunc(variables):
