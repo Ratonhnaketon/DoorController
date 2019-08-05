@@ -1,6 +1,5 @@
 from time import sleep
 from threading import Thread
-from DoorSensorController.controller import doorSensor
 
 class StateMachine(Thread):
     def __init__(self, states, variables, initState):
@@ -17,7 +16,6 @@ class StateMachine(Thread):
         print('Starting state machine...\r')
         
         while True:
-            self.variables['isDoorOpen'] = doorSensor.doorIsOpen
             self.resetVariablesIfInitState()
             self.getActualState()
             print('Actual state: {0}\r'.format(self.actualState.name))
